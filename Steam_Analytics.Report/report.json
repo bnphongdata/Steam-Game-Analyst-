@@ -1,0 +1,15 @@
+{
+  "config": "{\"version\": \"5.55\", \"themeCollection\": {\"baseTheme\": {\"name\": \"CY24SU10\", \"version\": \"5.55\", \"type\": 2}}, \"activeSectionIndex\": 0, \"defaultDrillFilterOtherVisuals\": true, \"settings\": {\"useNewFilterPaneExperience\": true}}",
+  "layoutOptimization": 0,
+  "sections": [
+    {
+      "name": "ReportSection1",
+      "displayName": "01. T\u1ed5ng Quan Th\u1ecb Tr\u01b0\u1eddng Steam",
+      "filters": "[]",
+      "ordinal": 0,
+      "width": 1280,
+      "height": 720,
+      "visualContainers": []
+    }
+  ]
+}
