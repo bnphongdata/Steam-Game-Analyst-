@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "datasetReference": {
+    "byPath": {
+      "path": "../Steam_Analytics.SemanticModel"
+    },
+    "byConnection": null
+  }
+}
