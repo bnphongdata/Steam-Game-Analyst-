@@ -12,13 +12,18 @@ venv/
 env/
 ENV/
 
-# Data Files (Raw data is downloaded via src/01_download_data.py)
+# Raw & Staging Data (Tải và xử lý tự động qua src/run_pipeline.py)
 data/raw/*
 !data/raw/.gitkeep
 data/staging/*
 !data/staging/.gitkeep
 
-# Large SQLite database files (tạo tự động bằng script ETL)
+# CSV Data lớn (Tránh vượt giới hạn 100MB của GitHub, người dùng có thể xuất lại bằng pipeline)
+data/processed/csv/*
+!data/processed/csv/.gitkeep
+
+# SQLite database file (>100MB, được tạo tự động bởi src/05_export_database.py)
+data/processed/*.db
 *.db-journal
 *.db-wal
 
