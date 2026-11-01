@@ -1,0 +1,12 @@
+# Thư viện phục vụ tải và xử lý dữ liệu (Data Ingestion & Processing)
+kagglehub>=0.3.0
+pandas>=2.0.0
+numpy>=1.24.0
+pyarrow>=14.0.0
+
+# Phục vụ lưu trữ và phân tích SQL / Database
+sqlalchemy>=2.0.0
+
+# Phục vụ xuất báo cáo và trực quan hóa (nếu cần mở rộng)
+openpyxl>=3.1.0
+tqdm>=4.66.0

@@ -1,0 +1,28 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+
+# Data Files (Raw data is downloaded via src/01_download_data.py)
+data/raw/*
+!data/raw/.gitkeep
+data/staging/*
+!data/staging/.gitkeep
+
+# Large SQLite database files (tạo tự động bằng script ETL)
+*.db-journal
+*.db-wal
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
