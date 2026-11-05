@@ -8,16 +8,16 @@ Toàn bộ quy trình từ Thu thập dữ liệu (Ingestion), Khám phá & Ki�
 
 ## 📌 Điểm Nổi Bật Của Dự Án
 
-- Dữ liệu chuẩn xác & cập nhật: Khai thác hơn 89,618 trò chơi chính thức trên Steam từ bộ dữ liệu `artermiloff/steam-games-dataset` (đã loại bỏ Playtest, bản beta không chính thức).
-- Mô hình hóa dữ liệu chuẩn Ralph Kimball (Star Schema): Tách bạch rõ ràng giữa Fact Table (`fact_game_metrics`) và các Dimension Tables (`dim_games`, `dim_date`, `dim_genres`, `dim_categories`, `dim_developers`, `dim_publishers`, `dim_tags`), chuẩn hóa các quan hệ Nhiều - Nhiều (Many-to-Many) qua Bridge Tables.
+- Dữ liệu chuẩn xác & cập nhật: Khai thác hơn 89,618 trò chơi chính thức trên Steam từ bộ dữ liệu "artermiloff/steam-games-dataset" (đã loại bỏ Playtest, bản beta không chính thức).
+- Mô hình hóa dữ liệu chuẩn Ralph Kimball (Star Schema): Tách bạch rõ ràng giữa Fact Table ("fact_game_metrics") và các Dimension Tables ("dim_games", "dim_date", "dim_genres", "dim_categories", "dim_developers", "dim_publishers", "dim_tags"), chuẩn hóa các quan hệ Nhiều - Nhiều (Many-to-Many) qua Bridge Tables.
 - Kỹ thuật tính năng kinh doanh (Business Feature Engineering):
-  - Tách khoảng người sở hữu (`estimated_owners`) thành các giá trị số học: `min`, `max`, `avg`.
-  - Ước tính doanh thu gộp (`estimated_gross_revenue = owners_avg  price`).
-  - Phân khúc giá (`price_tier`) và phân loại đánh giá người dùng theo chuẩn Valve (`review_score_tier`).
-  - Chuẩn hóa thời gian chơi từ phút sang giờ (`playtime_hours`).
-  - Trích xuất cờ tương thích hệ điều hành (`platform_support`) và hỗ trợ bản địa hóa Tiếng Việt (`has_vietnamese`).
+  - Tách khoảng người sở hữu ("estimated_owners") thành các giá trị số học: "min", "max", "avg".
+  - Ước tính doanh thu gộp ("estimated_gross_revenue = owners_avg  price").
+  - Phân khúc giá ("price_tier") và phân loại đánh giá người dùng theo chuẩn Valve ("review_score_tier").
+  - Chuẩn hóa thời gian chơi từ phút sang giờ ("playtime_hours").
+  - Trích xuất cờ tương thích hệ điều hành ("platform_support") và hỗ trợ bản địa hóa Tiếng Việt ("has_vietnamese").
 - Đa dạng hình thức lưu trữ (Ready-to-use):
-  - SQLite Data Warehouse (`steam_dw.db`): Chứa toàn bộ các bảng, ràng buộc khóa chính/ngoại, chỉ mục tối ưu và View tổng hợp `vw_steam_games_dashboard`.
+  - SQLite Data Warehouse ("steam_dw.db"): Chứa toàn bộ các bảng, ràng buộc khóa chính/ngoại, chỉ mục tối ưu và View tổng hợp "vw_steam_games_dashboard".
   - Parquet Columnar Files: Định dạng nén hiệu năng cao, tải cực nhanh cho Power BI, Python, DuckDB.
   - Clean CSV Files: Sẵn sàng cho người dùng Excel hoặc Power BI kéo thả trực tiếp.
 - Tài liệu & Chú thích 100% Tiếng Việt: Code Python, kịch bản SQL DDL, truy vấn phân tích kinh doanh và từ điển dữ liệu (Data Dictionary).
@@ -26,7 +26,7 @@ Toàn bộ quy trình từ Thu thập dữ liệu (Ingestion), Khám phá & Ki�
 
 ## 🗂️ Cấu Trúc Thư Mục Dự Án
 
-```
+
 D:\Steam-Game-Analyst-
 │
 ├── .gitignore                   # Cấu hình bỏ qua tệp tạm, cache và dữ liệu thô lớn
@@ -59,7 +59,7 @@ D:\Steam-Game-Analyst-
 └── docs/                        # Tài liệu chi tiết
     ├── data_dictionary.md       # Từ điển dữ liệu chi tiết từng cột, kiểu và ý nghĩa
     └── star_schema_erd.md       # Sơ đồ thực thể quan hệ ERD và hướng dẫn mô hình hóa
-```
+
 
 ---
 
@@ -67,14 +67,14 @@ D:\Steam-Game-Analyst-
 
 ### 1. Cài đặt môi trường
 Đảm bảo bạn đã cài đặt Python (>= 3.10). Cài đặt các thư viện phụ thuộc:
-```bash
+bash
 pip install -r requirements.txt
-```
+
 
 ### 2. Chạy toàn bộ Pipeline chỉ với 1 lệnh duy nhất:
-```bash
+bash
 python src/run_pipeline.py
-```
+
 Pipeline sẽ tự động tải dữ liệu, kiểm tra chất lượng, làm sạch, tạo 14 bảng Star Schema và nạp vào Data Warehouse SQLite trong vòng chưa đầy 1 phút!
 
 ---
@@ -83,15 +83,15 @@ Pipeline sẽ tự động tải dữ liệu, kiểm tra chất lượng, làm s
 
 ### Cách 1: Kéo thả 1 bảng phẳng duy nhất (Nhanh nhất - Không cần tạo quan hệ)
 1. Mở Power BI Desktop -> Chọn Get Data -> Chọn Parquet (hoặc Text/CSV).
-2. Trỏ đến tệp: `data/processed/parquet/flat_steam_games_bi.parquet` (hoặc `data/processed/csv/flat_steam_games_bi.csv`).
+2. Trỏ đến tệp: "data/processed/parquet/flat_steam_games_bi.parquet" (hoặc "data/processed/csv/flat_steam_games_bi.csv").
 3. Toàn bộ các thước đo doanh thu, rating, phân khúc giá, ngày phát hành đã được join sẵn. Bạn chỉ cần kéo thả vào biểu đồ!
 
 ### Cách 2: Kết nối Data Warehouse SQLite (Mô hình hóa chuyên sâu)
 1. Mở Power BI Desktop -> Chọn Get Data -> Chọn ODBC (hoặc SQLite Driver).
-2. Trỏ đến tệp cơ sở dữ liệu: `data/processed/steam_dw.db`.
+2. Trỏ đến tệp cơ sở dữ liệu: "data/processed/steam_dw.db".
 3. Bạn có thể chọn:
-   - Toàn bộ các bảng trong Star Schema (`fact_game_metrics`, `dim_games`, `dim_date`, `bridge_game_genres`...) và nối quan hệ theo hướng dẫn trong [docs/star_schema_erd.md](file:///D:/Steam-Game-Analyst-/docs/star_schema_erd.md).
-   - Hoặc chọn View tổng hợp: `vw_steam_games_dashboard`.
+   - Toàn bộ các bảng trong Star Schema ("fact_game_metrics", "dim_games", "dim_date", "bridge_game_genres"...) và nối quan hệ theo hướng dẫn trong [docs/star_schema_erd.md](file:///D:/Steam-Game-Analyst-/docs/star_schema_erd.md).
+   - Hoặc chọn View tổng hợp: "vw_steam_games_dashboard".
 
 ---
 
