@@ -28,8 +28,8 @@ Mục tiêu: Dành cho lãnh đạo và nhà đầu tư xem nhanh quy mô toàn 
 
 3. Sáu biểu đồ chính trên Sheet 1:
 - Biểu đồ 1: Clustered bar chart (Biểu đồ thanh ngang) - Top 10 thể loại game có doanh thu cao nhất.
-  Trục tung (Y-axis): Cột "genre_name" từ bảng "dim_genres".
-  Trục hoành (X-axis): Chỉ số "Total Estimated Revenue" từ bảng "_Key Measures".
+  Trục tung (Y-axis): Cột "primary_genre" từ bảng "dim_games" (Lưu ý: Dùng cột "primary_genre" để mỗi game tính đúng 1 thể loại chính, số liệu chuẩn xác 100% không bị trùng lặp).
+  Trục hoành (X-axis): Cột "estimated_revenue_avg_usd" từ bảng "fact_game_metrics" (hoặc chỉ số "Total Estimated Revenue" từ bảng "_Key Measures").
   Bộ lọc Filters: Chọn Top 10 theo doanh thu.
 
 - Biểu đồ 2: Clustered column chart (Biểu đồ cột đứng) - Xu hướng phát hành game qua từng năm.
@@ -70,8 +70,8 @@ Mục tiêu: Dành cho studio và nhà làm game tìm kiếm thể loại tiềm
 
 3. Sáu biểu đồ chính trên Sheet 2:
 - Biểu đồ 1: Clustered bar chart - Top 15 thể loại có doanh thu cao nhất toàn sàn.
-  Trục tung: Cột "genre_name" từ bảng "dim_genres".
-  Trục hoành: Chỉ số "Total Estimated Revenue" từ bảng "_Key Measures".
+  Trục tung: Cột "primary_genre" từ bảng "dim_games" (Hoặc cột "genre_name" từ bảng "dim_genres" nếu bạn đã bật lọc 2 chiều Both giữa bảng "dim_games" và "bridge_game_genres").
+  Trục hoành: Cột "estimated_revenue_avg_usd" từ bảng "fact_game_metrics" (hoặc chỉ số "Total Estimated Revenue").
   Bộ lọc: Top 15 theo doanh thu.
 
 - Biểu đồ 2: Clustered column chart - Số lượng tựa game theo từng thể loại.
