@@ -1,77 +1,78 @@
-# Hướng Dẫn Tự Xây Dựng Dashboard Power BI Thủ Công (Manual Dashboard Guide)
-**Dự Án**: Phân Tích Toàn Diện Thị Trường Game Steam (Steam Games Analytics)  
-**Tác giả**: Data Analyst Team  
-**Mô hình dữ liệu**: Star Schema (Kimball Methodology)
+# Huong Dan Tu Xay Dung Dashboard Power BI Thu Cong
+
+Du An: Phan Tich Toan Dien Thi Truong Game Steam (Steam Games Analytics)
+Tac gia: Data Analyst Team
+Mo hinh du lieu: Star Schema
 
 ---
 
-## 1. Lưu Tệp `.pbix` Từ Cửa Sổ Đang Mở
+## 1. Luu Tep `.pbix` Tu Cua So Dang Mo
 
-Trong cửa sổ **Power BI Desktop** đang mở của bạn (nơi đã có sẵn toàn bộ bảng dữ liệu và thước đo DAX ở thanh `Data` bên phải):
-1. Nhấn tổ hợp phím **`Ctrl + S`** (hoặc chọn **File** $\rightarrow$ **Save As**).
-2. Chọn thư mục lưu: `D:\Steam-Game-Analyst-\powerbi\`.
-3. Đặt tên tệp: **`Steam_Analytics.pbix`**.
-4. Nhấn **Save**.
+Trong cua so Power BI Desktop dang mo cua ban (noi da co san toan bo bang du lieu va thuoc do DAX o thanh Data ben phai):
+1. Nhan to hop phim Ctrl + S (hoac chon File -> Save As).
+2. Chon thu muc luu: `D:\Steam-Game-Analyst-\powerbi\`.
+3. Dat ten tep: `Steam_Analytics.pbix`.
+4. Nhan Save.
 
-Toàn bộ mô hình dữ liệu, quan hệ Star Schema và 14 thước đo DAX đã được tích hợp sẵn vĩnh viễn trong file `.pbix` này. Lần sau bạn chỉ cần nhấp đúp vào `Steam_Analytics.pbix` để làm việc tiếp.
+Toan bo mo hinh du lieu, quan he Star Schema va 14 thuoc do DAX da duoc tich hop san vinh vien trong file `.pbix` nay. Lan sau ban chi can nhap dup vao `Steam_Analytics.pbix` de lam viec tiep.
 
 ---
 
-## 2. Danh Mục 14 Thước Đo DAX Đã Nạp Sẵn Trong Bảng `_Key Measures`
+## 2. Danh Muc 14 Thuoc Do DAX Da Nap San Trong Bang `_Key Measures`
 
-Tất cả các thước đo dưới đây đã được Agent tính toán và định dạng sẵn (tiền tệ USD, phân cách hàng nghìn, phần trăm `%`), bạn chỉ cần kéo vào Canvas:
+Tat ca cac thuoc do duoi day da duoc tinh toan va dinh dang san (tien te USD, phan cach hang nghin, phan tram %), ban chi can keo vao Canvas:
 
-| STT | Tên Thước Đo (Measure) | Định Dạng | Mô Tả Ý Nghĩa Nghiệp Vụ |
+| STT | Ten Thuoc Do (Measure) | Dinh Dang | Mo Ta Y Nghia Nghiep Vu |
 | :---: | :--- | :---: | :--- |
-| 1 | `Total Games` | `#,##0` | Tổng số lượng tựa game hợp lệ trên Steam (89,618 games). |
-| 2 | `Total Free Games` | `#,##0` | Số lượng game miễn phí (Free-to-Play). |
-| 3 | `Total Paid Games` | `#,##0` | Số lượng game trả phí (Paid Games). |
-| 4 | `Free Games Ratio` | `0.0%` | Tỷ lệ game miễn phí trên toàn sàn Steam. |
-| 5 | `Vietnamese Supported Games` | `#,##0` | Số tựa game có hỗ trợ Tiếng Việt (3,553 games). |
-| 6 | `Total Estimated Revenue` | `$#,##0` | Tổng doanh thu ước tính toàn thị trường (~$130.83 Tỷ USD). |
-| 7 | `Avg Game Price` | `$#,##0.00` | Giá niêm yết trung bình của một tựa game ($7.31 USD). |
-| 8 | `Total Estimated Owners` | `#,##0` | Tổng lượt tải / sở hữu game ước tính. |
-| 9 | `Total Positive Reviews` | `#,##0` | Tổng số đánh giá tích cực của game thủ. |
-| 10 | `Total Negative Reviews` | `#,##0` | Tổng số đánh giá tiêu cực. |
-| 11 | `Total Reviews` | `#,##0` | Tổng số đánh giá toàn sàn Steam. |
-| 12 | `Platform Satisfaction Rate` | `0.0%` | Tỷ lệ hài lòng chung của game thủ (Positive Ratio ~82.9%). |
-| 13 | `Peak Concurrent Players (CCU)`| `#,##0` | Kỷ lục số người chơi đồng thời cao nhất. |
-| 14 | `Avg Playtime (Hours)` | `#,##0.0` | Thời gian chơi trung bình trọn đời của người chơi (Giờ). |
+| 1 | `Total Games` | #,##0 | Tong so luong tua game hop le tren Steam (89,618 games). |
+| 2 | `Total Free Games` | #,##0 | So luong game mien phi (Free-to-Play). |
+| 3 | `Total Paid Games` | #,##0 | So luong game tra phi (Paid Games). |
+| 4 | `Free Games Ratio` | 0.0% | Ty le game mien phi tren toan san Steam. |
+| 5 | `Vietnamese Supported Games` | #,##0 | So tua game co ho tro Tieng Viet (3,553 games). |
+| 6 | `Total Estimated Revenue` | $#,##0 | Tong doanh thu uoc tinh toan thi truong (Khoang 130.83 Ty USD). |
+| 7 | `Avg Game Price` | $#,##0.00 | Gia niem yet trung binh cua mot tua game (7.31 USD). |
+| 8 | `Total Estimated Owners` | #,##0 | Tong luot tai hoac so huu game uoc tinh. |
+| 9 | `Total Positive Reviews` | #,##0 | Tong so danh gia tich cuc cua game thu. |
+| 10 | `Total Negative Reviews` | #,##0 | Tong so danh gia tieu cuc. |
+| 11 | `Total Reviews` | #,##0 | Tong so danh gia toan san Steam. |
+| 12 | `Platform Satisfaction Rate` | 0.0% | Ty le hai long chung cua game thu (Positive Ratio khoang 82.9%). |
+| 13 | `Peak Concurrent Players (CCU)`| #,##0 | Ky luc so nguoi choi dong thoi cao nhat. |
+| 14 | `Avg Playtime (Hours)` | #,##0.0 | Thoi gian choi trung binh tron doi cua nguoi choi (Gio). |
 
 ---
 
-## 3. Công Thức Kéo Thả Xây Dựng 5 Biểu Đồ Khuyên Dùng
+## 3. Cong Thuc Keo Tha Xay Dung 5 Bieu Do Khuyen Dung
 
-### Visual 1: Thẻ Chỉ Số Tổng Quan (Cards)
-* **Loại visual**: **Card** (hoặc **New Card**)
-* **Trường dữ liệu**: Kéo thả lần lượt các chỉ số từ `_Key Measures`:
-  * Card 1: `Total Games`
-  * Card 2: `Total Estimated Revenue`
-  * Card 3: `Avg Game Price`
-  * Card 4: `Platform Satisfaction Rate`
-  * Card 5: `Vietnamese Supported Games`
+### Visual 1: The Chi So Tong Quan (Cards)
+- Loai visual: Card (hoac New Card)
+- Truong du lieu: Keo tha lan luot cac chi so tu bang `_Key Measures`:
+  - Card 1: `Total Games`
+  - Card 2: `Total Estimated Revenue`
+  - Card 3: `Avg Game Price`
+  - Card 4: `Platform Satisfaction Rate`
+  - Card 5: `Vietnamese Supported Games`
 
-### Visual 2: Top Thể Loại Game Có Doanh Thu Khủng Nhất
-* **Loại visual**: **Clustered Bar Chart** (Biểu đồ thanh ngang)
-* **Y-axis (Trục tung)**: `dim_genres[genre_name]`
-* **X-axis (Trục hoành)**: `_Key Measures[Total Estimated Revenue]`
-* **Bộ lọc (Filter)**: Lọc Top 10 thể loại có doanh thu cao nhất.
+### Visual 2: Top The Loai Game Co Doanh Thu Khung Nhat
+- Loai visual: Clustered Bar Chart (Bieu do thanh ngang)
+- Y-axis (Truc tung): `dim_genres[genre_name]`
+- X-axis (Truc hoanh): `_Key Measures[Total Estimated Revenue]`
+- Bo loc (Filter): Loc Top 10 the loai co doanh thu cao nhat.
 
-### Visual 3: Xu Hướng Số Game Phát Hành Qua Từng Năm
-* **Loại visual**: **Clustered Column Chart** hoặc **Area Chart**
-* **X-axis (Trục hoành)**: `dim_date[year]`
-* **Y-axis (Trục tung)**: `_Key Measures[Total Games]`
+### Visual 3: Xu Huong So Game Phat Hanh Qua Tung Nam
+- Loai visual: Clustered Column Chart hoac Area Chart
+- X-axis (Truc hoanh): `dim_date[year]`
+- Y-axis (Truc tung): `_Key Measures[Total Games]`
 
-### Visual 4: Cơ Cấu Phân Khúc Giá (Price Tiers)
-* **Loại visual**: **Donut Chart** (Biểu đồ tròn / donut)
-* **Legend (Chú giải)**: `dim_games[price_tier]`
-* **Values (Giá trị)**: `_Key Measures[Total Games]`
+### Visual 4: Co Cau Phan Khuc Gia (Price Tiers)
+- Loai visual: Donut Chart (Bieu do tron)
+- Legend (Chu giai): `dim_games[price_tier]`
+- Values (Gia tri): `_Key Measures[Total Games]`
 
-### Visual 5: Phân Bổ Tầng Đánh Giá Của Người Chơi (Review Score Tiers)
-* **Loại visual**: **Clustered Bar Chart** (Biểu đồ thanh)
-* **Y-axis**: `fact_game_metrics[review_score_tier]`
-* **X-axis**: `_Key Measures[Total Games]`
+### Visual 5: Phan Bo Tang Danh Gia Cua Nguoi Choi (Review Score Tiers)
+- Loai visual: Clustered Bar Chart (Bieu do thanh)
+- Y-axis: `fact_game_metrics[review_score_tier]`
+- X-axis: `_Key Measures[Total Games]`
 
-### Visual 6: Bộ Lọc Tương Tác Nền Tảng (Slicer)
-* **Loại visual**: **Slicer**
-* **Field**: `dim_games[platform_support]` (để lọc xem riêng theo Win, Mac, Linux hoặc đa nền tảng).
+### Visual 6: Bo Loc Tuong Tac Nen Tang (Slicer)
+- Loai visual: Slicer
+- Field: `dim_games[platform_support]` (de loc xem rieng theo Win, Mac, Linux hoac da nen tang).
